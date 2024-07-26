@@ -15,7 +15,7 @@ from models.models import DatoRegistro
 def obtenerListaIDS(dato, TokenMisi):
     url = "https://sopaqa.ircnl.gob.mx/serviciosmiportal/api/Visor/obtenerListado_IDLibros"
     st.write(dato)
-    data = json(dato)
+    data = json.dumps(dato.__dict__)
     st.write(data)
     response = requests.post(
         url, 
@@ -29,7 +29,6 @@ def obtenerListaIDS(dato, TokenMisi):
 # Obtener archivo
 def obtenerArchivo(IDLibro, Inscripcion, Municipio, TokenMisi):
     url = "https://sopaqa.ircnl.gob.mx/serviciosmiportal/api/Visor/obtenerListado_IDLibros"
-    data = json(DatoRegistro)
     response = requests.get(
         url, 
         params={
