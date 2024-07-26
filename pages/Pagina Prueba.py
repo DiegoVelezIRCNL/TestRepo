@@ -51,7 +51,7 @@ def displayPDF(DatoRegistro):
     # Displaying File
     st.markdown(pdf_display, unsafe_allow_html=True)
 
-listaIDS = list('Test2')
+listaIDS = ['Test2']
 
 dato = DatoRegistro('','','','','','')
 
