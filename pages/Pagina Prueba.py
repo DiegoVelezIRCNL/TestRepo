@@ -51,7 +51,8 @@ def displayPDF(DatoRegistro):
     st.markdown(pdf_display, unsafe_allow_html=True)
 
 listaIDS = ()
-dato = DatoRegistro()
+
+dato = DatoRegistro('','','','','','')
 
 dato.Anio = st.text_input("Año", "")
 dato.Volumen = st.text_input("Volumen", "")
