@@ -16,7 +16,6 @@ def obtenerListaIDS(dato, TokenMisi):
     url = "https://sopaqa.ircnl.gob.mx/serviciosmiportal/api/Visor/obtenerListado_IDLibros"
     st.write(dato)
     data = json.dumps(dato.__dict__)
-    st.write(data)
     response = requests.post(
         url, 
         json = data, 
@@ -24,7 +23,8 @@ def obtenerListaIDS(dato, TokenMisi):
             'TokenMisi': TokenMisi 
             }
     )
-    return response
+    st.write(response)
+    listaIDS = response
 
 # Obtener archivo
 def obtenerArchivo(IDLibro, Inscripcion, Municipio, TokenMisi):
