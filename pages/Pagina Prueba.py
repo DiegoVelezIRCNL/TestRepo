@@ -23,7 +23,7 @@ def obtenerListaIDS(dato, TokenMisi):
             }
     )
     
-    st.write(response)
+    st.write(response.url)
 
     if(response.status_code == 200):
         st.session_state['listaIDS'] = ["N/A"].append(response)
