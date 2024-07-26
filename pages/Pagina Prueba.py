@@ -12,9 +12,11 @@ from models.models import DatoRegistro
 # Replace with the correct URL
 
 
-def obtenerListaIDS(DatoRegistro, TokenMisi):
+def obtenerListaIDS(dato, TokenMisi):
     url = "https://sopaqa.ircnl.gob.mx/serviciosmiportal/api/Visor/obtenerListado_IDLibros"
-    data = json(DatoRegistro)
+    st.write(dato)
+    data = json(dato)
+    st.write(data)
     response = requests.post(
         url, 
         json = data, 
