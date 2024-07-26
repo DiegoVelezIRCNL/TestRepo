@@ -24,7 +24,7 @@ def obtenerListaIDS(dato, TokenMisi):
             }
     )
     st.write(response)
-    listaIDS.append('Si')
+    listaIDS.append('Test')
 
 # Obtener archivo
 def obtenerArchivo(IDLibro, Inscripcion, Municipio, TokenMisi):
@@ -51,7 +51,7 @@ def displayPDF(DatoRegistro):
     # Displaying File
     st.markdown(pdf_display, unsafe_allow_html=True)
 
-listaIDS = list ()
+listaIDS = list('Test2')
 
 dato = DatoRegistro('','','','','','')
 
@@ -64,7 +64,9 @@ dato.Seccion = st.text_input("Seccion", "")
 
 option = st.selectbox(
     "Escoge un ID",
-    listaIDS
+    listaIDS,
+    index=None,
+    placeholder="ID",
 )
 
 st.title('Pagina de prueba')
