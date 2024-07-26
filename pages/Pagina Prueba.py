@@ -14,7 +14,6 @@ from models.models import DatoRegistro
 
 def obtenerListaIDS(dato, TokenMisi): 
     url = "https://sopaqa.ircnl.gob.mx/serviciosmiportal/api/Visor/obtenerListado_IDLibros"
-    st.write(dato)
     data = json.dumps(dato.__dict__)
     response = requests.post(
         url, 
@@ -24,6 +23,8 @@ def obtenerListaIDS(dato, TokenMisi):
             }
     )
     
+    st.write(response)
+
     if(response.status_code == 200):
         st.session_state['listaIDS'] = ["N/A"].append(response)
     else: 
