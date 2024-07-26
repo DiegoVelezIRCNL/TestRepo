@@ -24,7 +24,7 @@ def obtenerListaIDS(dato, TokenMisi):
             }
     )
     st.write(response)
-    listaIDS.insert('Test')
+    listaIDS.append("TEST")
 
 # Obtener archivo
 def obtenerArchivo(IDLibro, Inscripcion, Municipio, TokenMisi):
