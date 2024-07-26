@@ -18,7 +18,7 @@ def obtenerDatosAlerta(hashFolio):
     ObjDatosAlerta = json.load(response.content)
     return ObjDatosAlerta
 
-objDatosAlerta = ObjDatosAlerta.__init__()
+objDatosAlerta: ObjDatosAlerta = None
 
 st.title("Validador de Alerta")
 
