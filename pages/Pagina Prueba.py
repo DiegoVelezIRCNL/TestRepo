@@ -70,6 +70,7 @@ option = st.selectbox(
     st.session_state['listaIDS'],
     index=None,
     placeholder="ID",
+    on_change=st.write('Hola')
 )
 
 st.title('Pagina de prueba')
