@@ -25,7 +25,7 @@ def obtenerListaIDS(dato, TokenMisi):
     )
     
     if(response.status_code == 200):
-        st.session_state['listaIDS'] = response
+        st.session_state['listaIDS'] = ["N/A"].append(response)
 
 # Obtener archivo
 def obtenerArchivo(IDLibro, Inscripcion, Municipio, TokenMisi):
