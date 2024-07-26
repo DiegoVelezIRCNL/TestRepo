@@ -17,23 +17,17 @@ def obtenerListaIDS(dato, TokenMisi):
     data = json.dumps(dato.__dict__)
     response = requests.post(
         url, 
-        json = data, 
+        json = json.loads(data), 
         headers = {
             'TokenMisi': TokenMisi 
             }
     )
-    
-    st.write(data)
-    st.write(response)
-
-    if(response.status_code == 200):
-        st.session_state['listaIDS'] = ["N/A"].append(response)
-    else: 
-        st.session_state['listaIDS'] = ["N/A"]
+    json_dict = json.loads(response.content)
+    st.session_state['listaIDS'] = json_dict
 
 # Obtener archivo
 def obtenerArchivo(IDLibro, Inscripcion, Municipio, TokenMisi):
-    url = "https://sopaqa.ircnl.gob.mx/serviciosmiportal/api/Visor/obtenerListado_IDLibros"
+    url = "https://sopaqa.ircnl.gob.mx/serviciosmiportal/api/Visor/obtenerDocumento"
     response = requests.get(
         url, 
         params={
@@ -45,17 +39,19 @@ def obtenerArchivo(IDLibro, Inscripcion, Municipio, TokenMisi):
             'TokenMisi': TokenMisi
         })
     
-    return response
+    return response.content
 
-def displayPDF(DatoRegistro):
-    resultadoPDF = obtenerArchivo(DatoRegistro)
-    # Opening file from file path
-    base64_pdf = base64.b64encode(resultadoPDF).decode('utf-8')
-    # Embedding PDF in HTML
-    pdf_display = F'<embed src="data:application/pdf;base64,{base64_pdf}" width="700" height="1000" type="application/pdf">'
+def displayPDF(IDLibro, Inscripcion, Municipio, TokenMisi):
+    
+    resultadoPDF = obtenerArchivo(IDLibro, Inscripcion, Municipio, TokenMisi)
+    base64_pdf = base64.b64encode(resultadoPDF).decode("utf-8", 'ignore')
+    pdf_display = F'<iframe src="data:application/pdf;base64,{base64_pdf}" width="700" height="1000" type="application/pdf"></iframe>'
 
     # Displaying File
     st.markdown(pdf_display, unsafe_allow_html=True)
+
+st.title('Visor Prueba')
+
 
 if 'listaIDS' not in st.session_state:
     st.session_state['listaIDS'] = []
@@ -68,6 +64,8 @@ dato.Libro = st.text_input("Libro", "")
 dato.Inscripcion = st.text_input("Inscripcion", "")
 dato.Municipio = st.text_input("Municipio", "")
 dato.Seccion = st.text_input("Seccion", "")
+tokenMisi = st.text_input("TokenMisi", "")
+st.button("Buscar", type="primary", on_click = obtenerListaIDS, args=[dato, tokenMisi]) 
 
 option = st.selectbox(
     "Escoge un ID",
@@ -76,9 +74,4 @@ option = st.selectbox(
     placeholder="ID"
 )
 
-st.title('Pagina de prueba')
-
-st.write("Hola6")
-tokenMisi = st.text_input("TokenMisi", "")
-
-st.button("Buscar", type="primary", on_click = obtenerListaIDS, args=[dato, tokenMisi]) 
+st.button("Visualizar", on_click = displayPDF, args=[option, dato.Inscripcion, dato.Municipio, tokenMisi])
