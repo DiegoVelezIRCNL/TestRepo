@@ -26,6 +26,8 @@ def obtenerListaIDS(dato, TokenMisi):
     
     if(response.status_code == 200):
         st.session_state['listaIDS'] = ["N/A"].append(response)
+    else: 
+        st.session_state['listaIDS'] = ["N/A"]
 
 # Obtener archivo
 def obtenerArchivo(IDLibro, Inscripcion, Municipio, TokenMisi):
@@ -69,8 +71,7 @@ option = st.selectbox(
     "Escoge un ID",
     st.session_state['listaIDS'],
     index=None,
-    placeholder="ID",
-    on_change=st.write('Hola')
+    placeholder="ID"
 )
 
 st.title('Pagina de prueba')
