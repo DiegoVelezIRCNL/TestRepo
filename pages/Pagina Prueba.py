@@ -13,6 +13,7 @@ from models.models import DatoRegistro
 
 
 def obtenerListaIDS(dato, TokenMisi):
+    listaIDS.append("TEST3")
     url = "https://sopaqa.ircnl.gob.mx/serviciosmiportal/api/Visor/obtenerListado_IDLibros"
     st.write(dato)
     data = json.dumps(dato.__dict__)
