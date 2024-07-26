@@ -24,7 +24,7 @@ def obtenerListaIDS(dato, TokenMisi):
             }
     )
     st.write(response)
-    listaIDS = response
+    listaIDS.append('Si')
 
 # Obtener archivo
 def obtenerArchivo(IDLibro, Inscripcion, Municipio, TokenMisi):
@@ -51,7 +51,7 @@ def displayPDF(DatoRegistro):
     # Displaying File
     st.markdown(pdf_display, unsafe_allow_html=True)
 
-listaIDS = ()
+listaIDS = list ()
 
 dato = DatoRegistro('','','','','','')
 
