@@ -12,8 +12,7 @@ from models.models import DatoRegistro
 # Replace with the correct URL
 
 
-def obtenerListaIDS(dato, TokenMisi):
-    listaIDS.append("TEST3")
+def obtenerListaIDS(dato, TokenMisi): 
     url = "https://sopaqa.ircnl.gob.mx/serviciosmiportal/api/Visor/obtenerListado_IDLibros"
     st.write(dato)
     data = json.dumps(dato.__dict__)
@@ -27,12 +26,6 @@ def obtenerListaIDS(dato, TokenMisi):
     
     if(response.status_code == 200):
         st.session_state['listaIDS'] = response
-
-    option = st.selectbox(
-        "Escoge un ID",
-        listaIDS,
-        index=None,
-        placeholder=listaIDS[0])
 
 # Obtener archivo
 def obtenerArchivo(IDLibro, Inscripcion, Municipio, TokenMisi):
