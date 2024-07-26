@@ -25,8 +25,9 @@ def obtenerListaIDS(dato, TokenMisi):
             }
     )
     
-    listaIDS.extend(response)
-    listaIDS.append("Hola6")
+    if(response.status_code == 200):
+        st.session_state['listaIDS'] = response
+
     option = st.selectbox(
         "Escoge un ID",
         listaIDS,
@@ -59,7 +60,8 @@ def displayPDF(DatoRegistro):
     # Displaying File
     st.markdown(pdf_display, unsafe_allow_html=True)
 
-listaIDS = ['Test2']
+if 'listaIDS' not in st.session_state:
+    st.session_state['listaIDS'] = []
 
 dato = DatoRegistro('','','','','','')
 
@@ -72,7 +74,7 @@ dato.Seccion = st.text_input("Seccion", "")
 
 option = st.selectbox(
     "Escoge un ID",
-    listaIDS,
+    st.session_state['listaIDS'],
     index=None,
     placeholder="ID",
 )
