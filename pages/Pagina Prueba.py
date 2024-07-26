@@ -23,7 +23,7 @@ def obtenerListaIDS(dato, TokenMisi):
             }
     )
     
-    st.write(response.url)
+    st.write(data)
     st.write(response)
 
     if(response.status_code == 200):
