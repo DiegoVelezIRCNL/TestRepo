@@ -24,8 +24,14 @@ def obtenerListaIDS(dato, TokenMisi):
             'TokenMisi': TokenMisi 
             }
     )
-    st.write(response)
-    listaIDS.append("TEST")
+    
+    listaIDS.extend(response)
+    listaIDS.append("Hola6")
+    option = st.selectbox(
+        "Escoge un ID",
+        listaIDS,
+        index=None,
+        placeholder=listaIDS[0])
 
 # Obtener archivo
 def obtenerArchivo(IDLibro, Inscripcion, Municipio, TokenMisi):
@@ -40,6 +46,7 @@ def obtenerArchivo(IDLibro, Inscripcion, Municipio, TokenMisi):
         headers={
             'TokenMisi': TokenMisi
         })
+    
     return response
 
 def displayPDF(DatoRegistro):
