@@ -71,4 +71,4 @@ st.title('Pagina de prueba')
 st.write("Hola6")
 tokenMisi = st.text_input("TokenMisi", "")
 
-st.button("Buscar", type="primary", on_click = obtenerListaIDS(dato, tokenMisi)) 
+st.button("Buscar", type="primary", on_click = obtenerListaIDS, args=[dato, tokenMisi]) 
